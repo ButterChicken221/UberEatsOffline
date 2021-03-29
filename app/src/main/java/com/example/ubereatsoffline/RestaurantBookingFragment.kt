@@ -26,7 +26,7 @@ class RestaurantBookingFragment: BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val restaurant = Restaurant("1", "Hauz Khas Social", rating = "4.3", imageUrl = "https://b.zmtcdn.com/data/pictures/7/18037817/235a118e0c275deae64db9a2a4b3d6a2_featured_v2.png")
+        val restaurant = Restaurant("1", "Hauz Khas Social", rating = 4.3f, imageUrl = "https://b.zmtcdn.com/data/pictures/7/18037817/235a118e0c275deae64db9a2a4b3d6a2_featured_v2.png")
         mBinding.restaurantName.text = restaurant.name
         mBinding.restaurantRating.text = restaurant.rating.toString()
         Glide.with(context!!).load(restaurant.imageUrl).into(mBinding.restaurantImage)
