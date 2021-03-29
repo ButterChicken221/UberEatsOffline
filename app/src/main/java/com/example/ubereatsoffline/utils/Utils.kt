@@ -14,4 +14,8 @@ object Utils {
     fun showLongToast(msg: String, context: Context) {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
+
+    fun getFormattedTime(time: String): String {
+        return time.split("T")[1].substring(0,5)
+    }
 }

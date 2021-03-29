@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ubereatsoffline.R
 import com.example.ubereatsoffline.listeners.SlotActionListener
 import com.example.ubereatsoffline.models.Slot
+import com.example.ubereatsoffline.utils.Utils
 
 
-class RestaurantDetailAdapter(private val mList: List<Slot>, val context: Context, val listener: SlotActionListener): RecyclerView.Adapter<RestaurantDetailAdapter.RestaurantDetailViewHolder>() {
+class RestaurantDetailAdapter(private val mList: List<Slot>, private val context: Context): RecyclerView.Adapter<RestaurantDetailAdapter.RestaurantDetailViewHolder>() {
 
     inner class RestaurantDetailViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val slotTv: TextView = view.findViewById(R.id.slot)
@@ -22,16 +23,10 @@ class RestaurantDetailAdapter(private val mList: List<Slot>, val context: Contex
     }
 
     override fun onBindViewHolder(holder: RestaurantDetailViewHolder, position: Int) {
-
-        holder.slotTv.text = getFormattedTime(mList[position].timeSlot)
-        holder.slotTv.setOnClickListener {
-            listener.onSlotClicked(mList[position])
-        }
+        holder.slotTv.text = Utils.getFormattedTime(mList[position].timeSlot)
     }
 
-    private fun getFormattedTime(time: String): String {
-        return time.split("T")[1].substring(0,5)
-    }
+
 
     override fun getItemCount(): Int {
         return mList.size

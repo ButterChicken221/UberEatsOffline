@@ -3,6 +3,7 @@ package com.example.ubereatsoffline
 import android.content.Intent
 import android.location.Address
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -63,15 +64,17 @@ class MainActivity : AppCompatActivity(), RestaurantActionListener {
         mAdapter = RestaurantAdapter(restaurantList, this, this)
         mBinding.restaurantRv.apply {
             adapter = mAdapter
-            layoutManager =
-                LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+            visibility = View.VISIBLE
+            mBinding.loadingState.visibility = View.GONE
         }
     }
 
     override fun onRestaurantClicked(restaurant: Restaurant) {
-        startActivity(Intent(this, RestaurantDetailsActivity::class.java).apply {
+        RestaurantBookingFragment(restaurant, this.application).show(supportFragmentManager, "slot screen")
+        /*startActivity(Intent(this, RestaurantDetailsActivity::class.java).apply {
             putExtra("restaurant", Gson().toJson(restaurant).toString())
-        })
+        })*/
     }
 
 }
