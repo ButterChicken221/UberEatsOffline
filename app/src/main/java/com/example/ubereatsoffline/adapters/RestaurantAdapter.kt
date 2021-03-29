@@ -27,4 +27,8 @@ class RestaurantAdapter(
         return mList.size
     }
 
+    fun updateList(list: List<Restaurant>) {
+        mList = list
+    }
+
 }

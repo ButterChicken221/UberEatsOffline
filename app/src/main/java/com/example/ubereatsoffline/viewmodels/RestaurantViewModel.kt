@@ -35,16 +35,18 @@ class RestaurantViewModel: ViewModel() {
         return data
     }
 
-    fun bookTable(bookingInfo: BookingInfo) {
+    fun bookTable(bookingInfo: BookingInfo): MutableLiveData<Boolean> {
         val call = service.bookTable(bookingInfo)
+        val data = MutableLiveData<Boolean>()
         call.enqueue(object : Callback<JSONObject> {
             override fun onResponse(call: Call<JSONObject>, response: Response<JSONObject>) {
-                Log.d("shakti", "onResponse: table booking successful")
+                data.postValue(true)
             }
 
             override fun onFailure(call: Call<JSONObject>, t: Throwable) {
-                Log.d("shakti", "onResponse: table booking failed")
+                data.postValue(false)
             }
         })
+        return data
     }
 }

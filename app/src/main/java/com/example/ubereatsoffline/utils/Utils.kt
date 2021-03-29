@@ -5,6 +5,8 @@ import android.widget.Toast
 
 object Utils {
 
+    var isRefreshRequired = false
+
     fun showShortToast(msg: String, context: Context) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }

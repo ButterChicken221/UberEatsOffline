@@ -27,9 +27,10 @@ class RestaurantDetailsActivity : AppCompatActivity(), SlotActionListener {
 
         val listener = this
         restaurant?.reservationSlots?.run {
+
             mBinding.slotRv.apply {
                 layoutManager = GridLayoutManager(this@RestaurantDetailsActivity, 3)
-                adapter = RestaurantDetailAdapter(this@run, this@RestaurantDetailsActivity, listener)
+                adapter = RestaurantDetailAdapter(this@run.filter { it.availableCount > 0 }, this@RestaurantDetailsActivity, listener)
             }
         }
     }

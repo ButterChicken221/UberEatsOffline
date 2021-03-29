@@ -38,25 +38,56 @@
                 android:id="@+id/restaurant_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/black"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/restaurant_image"/>
+                app:layout_constraintTop_toBottomOf="@id/restaurant_image" />
+
+            <TextView
+                android:id="@+id/timings_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Timings:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restaurant_name" />
+
+            <TextView
+                android:id="@+id/timings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="10:30AM - 11:30AM"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/timings_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/timings_label" />
 
             <TextView
                 android:id="@+id/restaurant_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/white"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/rating_bg"
-                android:padding="6dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:paddingStart="12dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="6dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/restaurant_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/restaurant_image"/>
+                app:layout_constraintTop_toTopOf="@id/restaurant_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

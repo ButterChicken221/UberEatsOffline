@@ -10,3 +10,4 @@ data class Restaurant(
     val imageUrl: String = "",
     val reservationSlots: List<Slot>? = null
 )
+
