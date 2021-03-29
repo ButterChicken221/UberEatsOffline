@@ -28,6 +28,7 @@ import com.example.ubereatsoffline.models.Restaurant
 import com.example.ubereatsoffline.utils.CalendarContentResolver
 import com.example.ubereatsoffline.utils.Utils
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.gson.Gson
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
@@ -180,7 +181,7 @@ class MainActivity : AppCompatActivity(), RestaurantActionListener {
 
     override fun onRestaurantClicked(restaurant: Restaurant) {
         startActivity(Intent(this, RestaurantDetailsActivity::class.java).apply {
-            putExtra("id", restaurant.id)
+            putExtra("restaurant", Gson().toJson(restaurant).toString())
         })
     }
 

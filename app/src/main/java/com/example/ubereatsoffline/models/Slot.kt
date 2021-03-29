@@ -1,5 +1,7 @@
 package com.example.ubereatsoffline.models
 
+import java.time.LocalDateTime
+
 data class Slot(
-    val startTime: String
+    val timeSlot: String
 )

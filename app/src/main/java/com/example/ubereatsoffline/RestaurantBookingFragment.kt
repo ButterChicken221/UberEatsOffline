@@ -1,19 +1,25 @@
 package com.example.ubereatsoffline
 
+import android.app.Application
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.ubereatsoffline.databinding.RestaurantBookingLayoutBinding
+import com.example.ubereatsoffline.models.BookingInfo
 import com.example.ubereatsoffline.models.Restaurant
+import com.example.ubereatsoffline.models.Slot
+import com.example.ubereatsoffline.viewmodels.RestaurantViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class RestaurantBookingFragment: BottomSheetDialogFragment() {
+class RestaurantBookingFragment(private val restaurant: Restaurant, private val slot: Slot, private val application: Application): BottomSheetDialogFragment() {
 
     private lateinit var mBinding: RestaurantBookingLayoutBinding
+    private lateinit var mViewModel: RestaurantViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,9 +32,12 @@ class RestaurantBookingFragment: BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val restaurant = Restaurant("1", "Hauz Khas Social", rating = 4.3f, imageUrl = "https://b.zmtcdn.com/data/pictures/7/18037817/235a118e0c275deae64db9a2a4b3d6a2_featured_v2.png")
+        mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(application).create(RestaurantViewModel::class.java)
         mBinding.restaurantName.text = restaurant.name
         mBinding.restaurantRating.text = restaurant.rating.toString()
         Glide.with(context!!).load(restaurant.imageUrl).into(mBinding.restaurantImage)
+        mBinding.bookCta.setOnClickListener {
+            mViewModel.bookTable(BookingInfo(restaurant.id, 1, slot.timeSlot))
+        }
     }
 }
